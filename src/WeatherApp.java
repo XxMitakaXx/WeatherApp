@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class WeatherApi {
+public class WeatherApp {
     public static JSONObject getWeatherData(String locationName) {
         JSONArray locationData = getLocationData(locationName);
 
@@ -43,13 +43,13 @@ public class WeatherApi {
 
             int index = findIndexOfCurrentTime(time);
 
-            JSONArray temperatureDate = (JSONArray) hourly.get("temperature_m2");
+            JSONArray temperatureDate = (JSONArray) hourly.get("temperature_2m");
             double temperature = (double) temperatureDate.get(index);
 
             JSONArray weathercode = (JSONArray) hourly.get("weathercode");
             String weatherCondition = convertWeatherCode((long) weathercode.get(index));
 
-            JSONArray relativeHumidity = (JSONArray) hourly.get("relativehumidity_m2");
+            JSONArray relativeHumidity = (JSONArray) hourly.get("relativehumidity_2m");
             long humidity = (long) relativeHumidity.get(index);
 
             JSONArray wingspeedData = (JSONArray) hourly.get("windspeed_10m");
